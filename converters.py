@@ -7,7 +7,7 @@ def list_to_tab(alist):
     f = codecs.open('results/%s' % fname, 'w', encoding='utf-8')
     f.write('%s\n' % '\t'.join([unicode(v) for v in alist[0].keys()]))  
     for d in alist:
-        f.write('%s\n' % '\t'.join([unicode(v) for v in d.values()]))  
+        f.write('%s\n' % '\t'.join([unicode(v).replace("\n", '') for v in d.values()]))  
     f.close()   
 
     return fname

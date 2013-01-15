@@ -103,7 +103,7 @@ def get_timeline(screen_name):
         tweets.extend(tweet_list)
         # When the list is max length long (200), we assume that 
         # the cursor can be moved along
-        if len(tweet_list) == 200:
+        if len(tweet_list) > 1:
             params['max_id'] = min([t['id'] for t in tweets])
             get_list()
         
