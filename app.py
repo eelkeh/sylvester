@@ -8,6 +8,10 @@ from bottle import route, get, post, request, run, template, static_file
 def server_static(filepath):
     return static_file(filepath, root='static')
 
+@route('/download/<filename:path>')
+def download(filename):
+    return static_file(filename, root='results', download=filename)
+
 @get('/')
 def index():
     return '''
