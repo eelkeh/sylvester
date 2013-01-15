@@ -21,26 +21,25 @@ def index():
             <meta charset="utf-8">
             <title>Sylvester</title>
             <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
+            <style>
+                .forms { color:#333; max-width:400px; margin:20px auto; }
+            </style>
         </head>
         <body>
             <div class="container">
                 
-                <h1>Twitter tools</h1>
-                
-                <form method="POST" action="/twitter/timeline">
-                    <label>Timeline</label>
-                    <input name="name" type="text" placeholder="Username..."/>
-                    <label class="checkbox">
-                        <input id="timeline" type="checkbox"> Check me out
-                    </label>
-                    <button type="submit" class="btn">Submit</button>
-                </form>
-                
-                <div class="results">
-
+                <div class="forms">
+                    <h2>Twitter tools</h2>
+                    
+                    <form method="post" action="/twitter/timeline">
+                        <label>Timeline</label>
+                        <input name="name" type="text" placeholder="Username..."/>
+                        <div></div>
+                        <button type="submit" class="btn">Submit</button>
+                    </form>
+                    
+                    <div class="results"></div>
                 </div>
-
-
             </div>
             
             <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
@@ -52,7 +51,8 @@ def index():
 
 @post('/twitter/timeline')
 def timeline():
-    screen_name = request.forms.get('name')
+    screen_name = request.forms.name
+
     tweets = twitter.get_timeline(screen_name)
     for t in tweets:      
         del t['entities']
