@@ -5,7 +5,11 @@ $(document).ready( function() {
 		$('.results').html("<em>Loading...</em>");
 		$.post(postUrl, $(this).serialize(), function(res) {
 			console.log(res);
-			$('.results').html("<a href='/download/" + res.filepath + "'>Download tab separated file</a>");
+			$('.results').html(
+				"<a style='display:block;' href='/download/" + res.tweets_filepath + "'>Tweets - Download tab separated file</a>" +
+				"<a style='display:block;' href='/download/" + res.hashtags_filepath + "'>Hashtags - Download tab separated file</a>" +
+				"<a style='display:block;' href='/download/" + res.urls_filepath + "'>Urls - Download tab separated file</a>"				
+			);
 		});
 		return false;
 	});

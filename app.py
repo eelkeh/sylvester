@@ -1,8 +1,10 @@
 import os
 import twitter
 import converters       
+from datetime import datetime
 from pprint import pprint
 from bottle import route, get, post, request, run, template, static_file
+from collections import defaultdict
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
@@ -33,7 +35,8 @@ def index():
                     
                     <form method="post" action="/twitter/timeline">
                         <label>Timeline</label>
-                        <input name="name" type="text" placeholder="Username..."/>
+                        <textarea name="name" rows="10" placeholder="Twitter usernames..."></textarea>
+                        <!-- <input name="name" type="textfield" placeholder="Username..."/> -->
                         <div></div>
                         <button type="submit" class="btn">Submit</button>
                     </form>
@@ -51,18 +54,56 @@ def index():
 
 @post('/twitter/timeline')
 def timeline():
-    screen_name = request.forms.name
 
-    tweets = twitter.get_timeline(screen_name)
-    for t in tweets:      
-        del t['entities']
-        del t['user']
-        try:
-            del t['retweeted_status']
-        except:
-            pass
+    screen_name_raw = request.forms.name
+    screen_names = [s.strip() for s in screen_name_raw.split("\n")]
 
-    return { 'filepath': converters.list_to_tab(tweets) }
+    tweets = []
+    hashtags = defaultdict(int)
+    urls = defaultdict(int)
+
+    for name in screen_names:
+        ts = twitter.get_timeline(name)
+        
+        for t in ts:      
+            t['screen_name'] = name
+            
+
+            print t
+
+            created = datetime.strptime(t['created_at'],'%a %b %d %H:%M:%S +0000 %Y')
+            
+
+            #pprint(t['entities'])
+            
+            for h in t['entities']['hashtags']:
+                if h['text']:
+                    hashtags[h['text']] += 1
+            
+            for u in t['entities']['urls']:
+                if u['expanded_url']:
+                    urls[u['expanded_url']] += 1
+
+            try:
+                print t['retweeted_status']
+            except:
+                pass
+
+            # Remove nested stuff
+            del t['entities']
+            del t['user']
+            try:
+                del t['retweeted_status']
+            except:
+                pass
+
+        tweets.extend(ts)
+
+    return { 
+        'tweets_filepath': converters.list_to_tab(tweets),
+        'hashtags_filepath': converters.countdict_to_tab(dict(hashtags)),
+        'urls_filepath': converters.countdict_to_tab(dict(urls))
+    }
 
 
 
