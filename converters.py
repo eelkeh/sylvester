@@ -18,6 +18,6 @@ def countdict_to_tab(countdict):
     f = codecs.open('results/%s' % fname, 'w', encoding='utf-8')
     for key, count in countdict.iteritems():
         f.write('%s\t%s\n' % (key, count))
-    f.close()
+    f.close()   
 
     return fname

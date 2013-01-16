@@ -37,6 +37,10 @@ def index():
                         <label>Timeline</label>
                         <textarea name="name" rows="10" placeholder="Twitter usernames..."></textarea>
                         <!-- <input name="name" type="textfield" placeholder="Username..."/> -->
+                        <label>From date</label>
+                        <input name="start" type="text" placeholder="12-31-2012"/>
+                        <label>To date</label>
+                        <input name="end" type="text" placeholder="01-04-2013"/>
                         <div></div>
                         <button type="submit" class="btn">Submit</button>
                     </form>
@@ -56,6 +60,14 @@ def index():
 def timeline():
 
     screen_name_raw = request.forms.name
+
+    try:
+        from_date = datetime.strptime(request.forms.start, '%m-%d-%Y')
+        end_date = datetime.strptime(request.forms.end, '%m-%d-%Y')
+    except:
+        from_date = None
+        end_date = None     
+
     screen_names = [s.strip() for s in screen_name_raw.split("\n")]
 
     tweets = []
@@ -63,19 +75,13 @@ def timeline():
     urls = defaultdict(int)
 
     for name in screen_names:
+        print "Starting on %s..." % name
         ts = twitter.get_timeline(name)
-        
-        for t in ts:      
+        addthese = []
+        for t in ts: 
+            print t     
             t['screen_name'] = name
-            
 
-            print t
-
-            created = datetime.strptime(t['created_at'],'%a %b %d %H:%M:%S +0000 %Y')
-            
-
-            #pprint(t['entities'])
-            
             for h in t['entities']['hashtags']:
                 if h['text']:
                     hashtags[h['text']] += 1
@@ -84,11 +90,7 @@ def timeline():
                 if u['expanded_url']:
                     urls[u['expanded_url']] += 1
 
-            try:
-                print t['retweeted_status']
-            except:
-                pass
-
+        
             # Remove nested stuff
             del t['entities']
             del t['user']
@@ -97,7 +99,12 @@ def timeline():
             except:
                 pass
 
-        tweets.extend(ts)
+            if from_date and end_date:
+                created = datetime.strptime(t['created_at'],'%a %b %d %H:%M:%S +0000 %Y')
+                if from_date < created < end_date:
+                    addthese.append(t)
+
+        tweets.extend(addthese)
 
     return { 
         'tweets_filepath': converters.list_to_tab(tweets),

@@ -1,7 +1,27 @@
 {
-	"client_key": 				"1zBf1OZDKMsEaTSUjD84g",
-	"client_secret": 			"Q3wN3Hhk2ScsH1UsWFj0hPG3iT3Q8LhJdERQ5S23qPg",
-	
-	"resource_owner_key":		"19818128-a6vjbLJV01OIdoYIjwKqZOb93K9WgXjVvASX5e8Q",
-	"resource_owner_secret": 	"AKMaW9y0nFAj0hrTKWKEjX8qkpE6MFIdkXc48z3k"
+	"keys":
+	[	
+		{
+			"client_key": 				"1zBf1OZDKMsEaTSUjD84g",
+			"client_secret": 			"Q3wN3Hhk2ScsH1UsWFj0hPG3iT3Q8LhJdERQ5S23qPg",
+
+			"resource_owner_key":		"19818128-a6vjbLJV01OIdoYIjwKqZOb93K9WgXjVvASX5e8Q",
+			"resource_owner_secret": 	"AKMaW9y0nFAj0hrTKWKEjX8qkpE6MFIdkXc48z3k"
+		},
+		{
+			"client_key": 				"94e0QcYgwONJ6KypEL2bkw",
+			"client_secret": 			"qfhNgHVDff0GsHJnAKEjxuHXo6bHWWIxUkS6YUawQM",
+
+			"resource_owner_key":		"19818128-D410I0oFjJ9CZWzCLFI9Ytntb6e2ILgNHj1Bo9ikM",
+			"resource_owner_secret": 	"kv8Kp8OPOA4v5buDyRuXCrsV2F2pakzfnd5zzLIhWeQ"
+		},
+		{
+			"client_key": 				"r1Z2VGTdEvxNHQC2pjvWWw",
+			"client_secret": 			"irV7hhwxY7GUPLvVI5Hb2ZRbsiZxQ7mohxiMUnwh8",
+
+			"resource_owner_key":		"19818128-3klnFFBDff01lmRyRsIQgmwLgGFisVJiVndeKfTRo",
+			"resource_owner_secret": 	"kT5mCzzzaqxEh6XzlLRUjjb73oalsx439K1wIRiL8z8"
+		}
+	]
+
 }	

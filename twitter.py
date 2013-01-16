@@ -4,11 +4,15 @@ from os import path
 from requests_oauthlib import OAuth1
 from pprint import pprint
 import unittest 
+from time import sleep
+import datetime
 
 base_url = u'https://api.twitter.com/1.1/'
 
 with open('keys.json') as keys_json:
-    keys = json.load(keys_json)
+    keys = json.load(keys_json)['keys']
+key_index = 0
+
 
 class TwitterAPI:
     def __init__(self, keys):
@@ -28,12 +32,21 @@ def request(uri, params= None):
         >>> response.status_code
         200
     """
+    global key_index
+    key = keys[key_index]
+
+    key_index += 1
+    if key_index == len(keys):
+        key_index = 0
+
     url = u'%s%s' % (base_url, uri)
-    oauth_sig = OAuth1(keys['client_key'], client_secret= keys['client_secret'],   
-                    resource_owner_key= keys['resource_owner_key'], 
-                    resource_owner_secret= keys['resource_owner_secret'],
+    oauth_sig = OAuth1(key['client_key'], client_secret= key['client_secret'],   
+                    resource_owner_key= key['resource_owner_key'], 
+                    resource_owner_secret= key['resource_owner_secret'],
                     signature_type='auth_header')
 
+    sleep(1.5)
+    print "Twitter API req: %s" % url
     r = requests.get(url, auth= oauth_sig, params= params, timeout= 10)
     return r
 
@@ -79,7 +92,7 @@ def get_followers(screen_name):
     return followers
 
 
-def get_timeline(screen_name):
+def get_timeline(screen_name, from_date=None, to_date=None):
     """
     Returns a collection of tweets for a particular user
     Max number to return is 200
@@ -101,6 +114,12 @@ def get_timeline(screen_name):
     def get_list():
         tweet_list = request(uri, params).json()
         tweets.extend(tweet_list)
+
+        # @TODO don't move the cursor when when more dates are parsed
+        # if from_date and to_date:
+        #    if from_date < tweet_date_to_datetime(tweet_list[0]['created_at']) < to_date:
+        #
+
         # When the list is max length long (200), we assume that 
         # the cursor can be moved along
         if len(tweet_list) > 1:
@@ -123,6 +142,9 @@ def get_favorites(screen_name):
         'include_entities': 1,
     }
     return request(uri, params)
+
+def tweet_date_to_datetime(datestr):
+    return datetime.strptime(datestr, '%a %b %d %H:%M:%S +0000 %Y')
 
 
 class TwitterTestCase(unittest.TestCase):
