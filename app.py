@@ -1,3 +1,5 @@
+from gevent import monkey; monkey.patch_all()
+
 from gevent import pywsgi
 from geventwebsocket.handler import WebSocketHandler
 from geventwebsocket import WebSocketError
@@ -169,6 +171,7 @@ def timeline():
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
+    port = 5000
     #app.run(host='0.0.0.0', port=port, reloader=True)
     server = pywsgi.WSGIServer(('127.0.0.1', port), app, handler_class=WebSocketHandler)
     server.serve_forever()
