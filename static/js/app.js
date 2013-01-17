@@ -1,5 +1,7 @@
 
-var ws = new WebSocket("ws://37.230.96.207/twitter/timeline");
+//var ws = new WebSocket("ws://37.230.96.207/twitter/timeline");
+var ws = new WebSocket("ws://localhost/twitter/timeline");
+
 
 ws.onmessage = function (evt) {
 	console.log(evt);
