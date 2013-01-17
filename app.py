@@ -170,5 +170,5 @@ def timeline():
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     #app.run(host='0.0.0.0', port=port, reloader=True)
-    server = pywsgi.WSGIServer(('0.0.0.0', port), app, handler_class=WebSocketHandler)
+    server = pywsgi.WSGIServer(('127.0.0.1', port), app, handler_class=WebSocketHandler)
     server.serve_forever()
