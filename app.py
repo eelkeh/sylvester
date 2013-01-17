@@ -1,20 +1,39 @@
+from gevent import pywsgi
+from geventwebsocket.handler import WebSocketHandler
+from geventwebsocket import WebSocketError
+
 import os
 import twitter
 import converters       
+import time
 from datetime import datetime
 from pprint import pprint
-from bottle import route, get, post, request, run, template, static_file
+import bottle
+from bottle import route, get, post, request, run, template, static_file, abort
 from collections import defaultdict
+import json
 
-@route('/static/<filepath:path>')
+app = bottle.Bottle()
+
+# web: gunicorn -w 4 -b 0.0.0.0:$PORT -k gevent app:app
+
+@app.route('/stream')
+def stream():
+    yield 'START'
+    time.sleep(3)
+    yield 'MIDDLE'
+    time.sleep(5)
+    yield 'END'
+
+@app.route('/static/<filepath:path>')
 def server_static(filepath):
     return static_file(filepath, root='static')
 
-@route('/download/<filename:path>')
+@app.route('/download/<filename:path>')
 def download(filename):
     return static_file(filename, root='results', download=filename)
 
-@get('/')
+@app.get('/')
 def index():
     return '''
         <!DOCTYPE html>
@@ -45,6 +64,7 @@ def index():
                         <button type="submit" class="btn">Submit</button>
                     </form>
                     
+                    <div class="message"></div>
                     <div class="results"></div>
                 </div>
             </div>
@@ -56,64 +76,99 @@ def index():
         </html>
         '''
 
-@post('/twitter/timeline')
+@app.route('/twitter/timeline')
 def timeline():
 
-    screen_name_raw = request.forms.name
-
-    try:
-        from_date = datetime.strptime(request.forms.start, '%m-%d-%Y')
-        end_date = datetime.strptime(request.forms.end, '%m-%d-%Y')
-    except:
-        from_date = None
-        end_date = None     
-
-    screen_names = [s.strip() for s in screen_name_raw.split("\n")]
-
-    tweets = []
-    hashtags = defaultdict(int)
-    urls = defaultdict(int)
-
-    for name in screen_names:
-        print "Starting on %s..." % name
-        ts = twitter.get_timeline(name)
-        addthese = []
-        for t in ts: 
-            print t     
-            t['screen_name'] = name
-
-            for h in t['entities']['hashtags']:
-                if h['text']:
-                    hashtags[h['text']] += 1
-            
-            for u in t['entities']['urls']:
-                if u['expanded_url']:
-                    urls[u['expanded_url']] += 1
+    
+    def process_timeline(fields):
+        screen_names = [s.strip() for s in fields['name'].split("\n")]
+        try:
+            from_date = datetime.strptime(fields['start'], '%m-%d-%Y')
+            end_date = datetime.strptime(fields['end'], '%m-%d-%Y')
+        except:
+            from_date = None
+            end_date = None     
 
         
-            # Remove nested stuff
-            del t['entities']
-            del t['user']
-            try:
-                del t['retweeted_status']
-            except:
-                pass
+        tweets = []
+        hashtags = defaultdict(int)
+        urls = defaultdict(int)
 
-            if from_date and end_date:
-                created = datetime.strptime(t['created_at'],'%a %b %d %H:%M:%S +0000 %Y')
-                if from_date < created < end_date:
-                    addthese.append(t)
+        for name in screen_names:
+            wsock.send(json.dumps({"message": "Processing <strong>%s</strong> tweets..." % name}))
+            ts = twitter.get_timeline(name)
+            addthese = []
+            
+            for t in ts: 
+                if type(t) is dict:
+                    t['screen_name'] = name
 
-        tweets.extend(addthese)
+                    for h in t['entities']['hashtags']:
+                        if h['text']:
+                            hashtags[h['text']] += 1
+                    
+                    for u in t['entities']['urls']:
+                        if u['expanded_url']:
+                            urls[u['expanded_url']] += 1
 
-    return { 
-        'tweets_filepath': converters.list_to_tab(tweets),
-        'hashtags_filepath': converters.countdict_to_tab(dict(hashtags)),
-        'urls_filepath': converters.countdict_to_tab(dict(urls))
-    }
+                
+                    # Remove nested stuff
+                    del t['entities']
+                    del t['user']
+                    try:
+                        del t['retweeted_status']
+                    except:
+                        pass
+
+                    if from_date and end_date:
+                        created = datetime.strptime(t['created_at'],'%a %b %d %H:%M:%S +0000 %Y')
+                        if from_date < created < end_date:
+                            addthese.append(t)
+
+            tweets.extend(addthese) 
+
+        wsock.send(json.dumps({
+            "message": "Done! Processed <strong>%s</strong> tweets..." % len(tweets), 
+            "results": """
+                <a style='display:block;' href='/download/%s'>Tweets - Download tab separated file</a>
+                <a style='display:block;' href='/download/%s'>Hashtags - Download tab separated file</a>
+                <a style='display:block;' href='/download/%s'>Urls - Download tab separated file</a>
+            """ % (converters.list_to_tab(tweets), converters.countdict_to_tab(dict(hashtags)), 
+                    converters.countdict_to_tab(dict(urls)) )
+
+         }))
+
+    
+
+    wsock = request.environ.get('wsgi.websocket')
+    if not wsock:
+        abort(400, 'Expected WebSocket request.')
+
+    while True:
+        try:
+            message = wsock.receive()
+            if message:
+                fields = json.loads(message)
+                print fields
+                wsock.send(json.dumps({"message": "Processing tweets..."}))
+                process_timeline(fields)
+
+        except WebSocketError:
+            break
+
+
+
+
+        #return { 
+        #    'tweets_filepath': converters.list_to_tab(tweets),
+        #    'hashtags_filepath': converters.countdict_to_tab(dict(hashtags)),
+        #    'urls_filepath': converters.countdict_to_tab(dict(urls))
+        #}
 
 
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    run(host='0.0.0.0', port=port, reloader=True)
+    #app.run(host='0.0.0.0', port=port, reloader=True)
+    server = pywsgi.WSGIServer(('127.0.0.1', port), app, handler_class=WebSocketHandler)
+    server.serve_forever()

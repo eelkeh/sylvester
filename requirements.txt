@@ -4,5 +4,6 @@ oauthlib==0.3.4
 requests==1.1.0
 wsgiref==0.1.2
 -e git+git://github.com/requests/requests-oauthlib.git#egg=requests-oauthlib
-gevent
+gevent 
+gevent-websocket==0.3.6
 gunicorn
