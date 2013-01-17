@@ -46,7 +46,7 @@ class MainHandler(tornado.web.RequestHandler):
                 
                 <div class="forms">
                     <h2>Twitter tools</h2>
-                    
+                    <p class="muted">Tornado version</p>
                     <form method="post" action="/twitter/timeline">
                         <label>Timeline</label>
                         <textarea name="name" rows="10" placeholder="Twitter usernames..."></textarea>
@@ -134,9 +134,9 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
         self.write_message(json.dumps({
             "message": "Done! Processed <strong>%s</strong> tweets..." % len(tweets), 
             "results": """
-                <a style='display:block;' href='/download/%s'>Tweets - Download tab separated file</a>
-                <a style='display:block;' href='/download/%s'>Hashtags - Download tab separated file</a>
-                <a style='display:block;' href='/download/%s'>Urls - Download tab separated file</a>
+                <a style='display:block;' href='/static/download/%s'>Tweets - Download tab separated file</a>
+                <a style='display:block;' href='/static/download/%s'>Hashtags - Download tab separated file</a>
+                <a style='display:block;' href='/static/download/%s'>Urls - Download tab separated file</a>
             """ % (converters.list_to_tab(tweets), converters.countdict_to_tab(dict(hashtags)), 
                     converters.countdict_to_tab(dict(urls)) )
 

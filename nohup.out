@@ -8,3 +8,265 @@
 127.0.0.1 - - [2013-01-17 10:42:23] "GET /favicon.ico HTTP/1.1" 404 865 0.007776
 127.0.0.1 - - [2013-01-17 10:44:07] "GET / HTTP/1.1" 200 1754 0.000570
 127.0.0.1 - - [2013-01-17 10:44:08] "GET /favicon.ico HTTP/1.1" 404 865 0.007932
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.37ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.78ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.32ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.33ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.89ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.35ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.42ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.77ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.76ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.35ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.87ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 1.01ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.71ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.36ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.35ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.36ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.77ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.76ms
+WARNING:root:404 GET /download/X-gc78oR1iHGfe0QxLV4ZA.csv (127.0.0.1) 0.38ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.37ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.44ms
+WebSocket opened
+WebSocket closed
+WebSocket opened
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+WebSocket opened
+WebSocket closed
+WebSocket opened
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuseWARNING:root:404 GET /favicon.ico (127.0.0.1) 0.35ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.34ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.74ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.36ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.33ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.41ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.37ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.34ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.36ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.71ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.34ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.33ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.53ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.34ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.34ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.38ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.32ms
+WebSocket opened
+WebSocket closed
+WebSocket opened
+WebSocket closed
+WebSocket opened
+WebSocket closed
+WebSocket opened
+WebSocket closed
+WebSocket opened
+WebSocket closed
+WebSocket opened
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+WebSocket closed
+WebSocket opened
+WebSocket closed
+WebSocket opened
+WebSocket closed
+WebSocket opened
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+WebSocket closed
+WebSocket opened
+WebSocket closed
+WebSocket opened
+WebSocket closed
+WebSocket opened
+WebSocket closed
+WebSocket opened
+WebSocket opened
+WebSocket closed
+WebSocket opened
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+WebSocket closed
+WebSocket opened
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+WebSocket opened
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+Twitter API req: https://api.twitter.com/1.1/statuses/user_timeline.json
+ERROR:root:Uncaught exception in /twitter/timeline
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/tornado/websocket.py", line 258, in wrapper
+    return callback(*args, **kwargs)
+  File "app.py", line 140, in on_message
+    """ % (converters.list_to_tab(tweets), converters.countdict_to_tab(dict(hashtags)),
+  File "/root/scripts/sylv/converters.py", line 9, in list_to_tab
+    keylist = alist[0].keys()
+IndexError: list index out of range
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.34ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.34ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.34ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.37ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.36ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.69ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.45ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.33ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.35ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.33ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.34ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.72ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.74ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.73ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.38ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.85ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.49ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.36ms
+WARNING:root:404 GET /favicon.ico (127.0.0.1) 0.71ms
