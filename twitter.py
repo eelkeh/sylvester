@@ -45,7 +45,7 @@ def request(uri, params= None):
                     resource_owner_secret= key['resource_owner_secret'],
                     signature_type='auth_header')
 
-    sleep(1.5)
+    sleep(2)
     print "Twitter API req: %s" % url
     r = requests.get(url, auth= oauth_sig, params= params, timeout= 10)
     return r
@@ -71,18 +71,20 @@ def get_followers(screen_name):
     Returns a cursored collection of user IDs for every user following the specified user.
     """
     uri = u'followers/ids.json'
-    params = {
-        'screen_name': screen_name
-    }
+    params = {}
     followers = []
+
+    # When the screen_name is an int, we assume that we're dealing 
+    # with a user id instead
+    try:
+        params['user_id'] = int(screen_name)
+    except ValueError:
+        params['screen_name'] = screen_name 
 
     def get_list():
         followers_list = request(uri, params).json()
-        pprint(followers_list)
         followers.extend(followers_list['ids'])
         
-        print len(followers)
-
         if followers_list['next_cursor']:
             params['cursor'] = followers_list['next_cursor']
             get_list()
@@ -104,12 +106,18 @@ def get_timeline(screen_name, from_date=None, to_date=None):
     """
     uri = u'statuses/user_timeline.json'
     params = {
-        'screen_name': screen_name, 
         'count': 200, 
         'include_entities': 1,
         'include_rts': 1,
     }
     tweets = []
+
+    # When the screen_name is an int, we assume that we're dealing 
+    # with a user id instead
+    try:
+        params['user_id'] = int(screen_name)
+    except ValueError:
+        params['screen_name'] = screen_name        
     
     def get_list():
         tweet_list = request(uri, params).json()
