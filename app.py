@@ -60,7 +60,8 @@ class MainHandler(tornado.web.RequestHandler):
                 </ul>
 
                 <div class="forms">
-                    <form method="post" action="/twitter/timeline" class="method" data-link="timeline" data-method="timeline">
+                    
+                    <form method="post" action="/twitter/timeline">
                         <label>Timeline</label>
                         <p class="muted">Get all tweets (and retweets) from a users timeline in a certain date range.</p>
 
@@ -185,6 +186,7 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
                         converters.countdict_to_tab(dict(urls)) )
 
              }))
+
 
 
 

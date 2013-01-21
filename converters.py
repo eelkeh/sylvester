@@ -17,6 +17,7 @@ def list_to_tab(alist):
 
     return fname
 
+
 def countdict_to_tab(countdict):
     fname = '%s.csv' % base64.urlsafe_b64encode(hashlib.md5(str(countdict)).digest())[:-2]
     f = codecs.open('static/download/%s' % fname, 'w', encoding='utf-8')
@@ -26,9 +27,11 @@ def countdict_to_tab(countdict):
 
     return fname
 
+
 def list_to_list(alist):
     fname = '%s.csv' % base64.urlsafe_b64encode(hashlib.md5(str(alist)).digest())[:-2]
     f = codecs.open('static/download/%s' % fname, 'w', encoding='utf-8')
     f.write('\n'.join(unicode(v) for v in alist))
     f.close()
+
     return fname
