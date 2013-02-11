@@ -1,6 +1,4 @@
-distribute==0.6.28
-oauthlib==0.3.4
+oauthlib==0.3.6
 requests==1.1.0
 wsgiref==0.1.2
--e git+git://github.com/requests/requests-oauthlib.git#egg=requests-oauthlib
-tornado
+git+git://github.com/requests/requests-oauthlib.git#egg=requests-oauthlib

@@ -1,27 +1,41 @@
 import requests 
-import json
-from os import path
 from requests_oauthlib import OAuth1
-from pprint import pprint
 import unittest 
 from time import sleep
 import datetime
+import time
+import sqlite3
+import json
+from itertools import cycle
 
-base_url = u'https://api.twitter.com/1.1/'
+conn = sqlite3.connect('locks.db')
+conn.isolation_level = None
+cursor = conn.cursor()
+cursor.execute('''CREATE TABLE IF NOT EXISTS locks
+             (key text, uri text, release integer, UNIQUE(key, uri) ON CONFLICT REPLACE)''')
+pools = {}
+blocked = {}
 
 with open('keys.json') as keys_json:
-    keys = json.load(keys_json)['keys']
-key_index = 0
-
-
-class TwitterAPI:
-    def __init__(self, keys):
-        pass
+    _keys = json.load(keys_json)['keys']
     
-    def request(self, url, parms):
-        pass
+keys = cycle(_keys)
+key = keys.next()
 
-def request(uri, params= None):
+BASE_URL = u'https://api.twitter.com/1.1/'
+WINDOW = 15 * 60
+
+class PoolExpired(Exception):
+    pass
+
+class RateLimitExceeded(Exception):
+    pass
+
+class TwitterError(Exception):
+    pass
+
+
+def request(uri, params):
     """
     Twitter REST OAuth request
     Returns the requests response object
@@ -31,25 +45,55 @@ def request(uri, params= None):
         >>> results = response.json()
         >>> response.status_code
         200
-    """
-    global key_index
-    key = keys[key_index]
+    """    
+    global key
+    
+    # Is this particular key with the uri locked because it reached the rate limit?
+    cursor.execute("SELECT release FROM locks WHERE key = ? AND uri = ?", (key['client_key'], uri))
+    locked = cursor.fetchone()
+    if locked:
+        timetosleep = locked[0] - int(time.time()) 
+        if timetosleep > 0:
+            print timetosleep
+            # @TODO Not so efficient, should sleep only when 
+            sleep(1)
 
-    key_index += 1
-    if key_index == len(keys):
-        key_index = 0
+            # Try the next key
+            key = keys.next()
+            request(uri, params)
+        else:
+            cursor.execute("DELETE FROM locks WHERE key = ? AND uri = ?", (key['client_key'], uri))
 
-    url = u'%s%s' % (base_url, uri)
+
+    url = u'%s%s' % (BASE_URL, uri)
     oauth_sig = OAuth1(key['client_key'], client_secret= key['client_secret'],   
                     resource_owner_key= key['resource_owner_key'], 
                     resource_owner_secret= key['resource_owner_secret'],
                     signature_type='auth_header')
 
-    sleep(2)
     print "Twitter API req: %s" % url
+
     r = requests.get(url, auth= oauth_sig, params= params, timeout= 10)
+    # @TODO Error handling!
+    # see https://dev.twitter.com/docs/error-codes-responses
+    if r.status_code in (200, 304):
+        remaining = int(r.headers['x-rate-limit-remaining'])
+    # Lock this key/method when it reached the rate limit
+        if remaining == 0:
+            #release = #int(time.time()) + timeleft
+            release = int(r.headers['x-rate-limit-reset'])
+            cursor.execute("INSERT INTO locks VALUES (?,?,?)", (key['client_key'], uri, release))
+
+    elif r.status_code in (400, 401, 403, 404, 406, 420, 422, 429, 500, 502, 503, 504):
+        raise TwitterError(r.json()['errors'][0]['message'])
+    else:
+        raise TwitterError("Unknown error")
+        
     return r
 
+
+def get_rate_limits():
+    pass
 
 def get_friends(screen_name):
     """ 
@@ -151,6 +195,7 @@ def get_favorites(screen_name):
     }
     return request(uri, params)
 
+
 def tweet_date_to_datetime(datestr):
     return datetime.strptime(datestr, '%a %b %d %H:%M:%S +0000 %Y')
 
@@ -177,4 +222,9 @@ class TwitterTestCase(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    cursor.execute("SELECT * FROM locks")
+    print cursor.fetchall()
+
+    for i in range(1,30):
+        get_friends('ekborra')
+    #unittest.main()
