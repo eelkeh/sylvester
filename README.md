@@ -10,8 +10,8 @@ Here's the gist:
 ## Example usage
 Timeline requests are limited to 200 tweets per request, get a set of tweets until the timeline is exhausted.
 
-	import json
 	import sylvester
+	import json
 
 	pool = sylvester.create_client_pool_from_json()
 	screen_name = "Twitter"
