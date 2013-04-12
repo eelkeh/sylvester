@@ -14,3 +14,28 @@ Timeline requests are limited to 200 tweets per request, get a set of tweets unt
 	screen_name = "Twitter"
 	for tweets in pool.get_timeline(screen_name):
 		parse_and_save(tweets)
+
+
+## keys.json
+Example keys.json file
+
+	{
+		"keys":
+		[
+		    {
+		        "client_key": 				"aaa",
+		        "client_secret": 			"bbb",
+
+		        "resource_owner_key":       "ccc",
+		        "resource_owner_secret":    "ddd"
+		    },
+		    {
+		        "client_key":               "eee",
+		        "client_secret":            "fff",
+
+		        "resource_owner_key":       "ggg",
+		        "resource_owner_secret":    "hhh"
+		    }
+		]
+
+	}
